@@ -1,57 +1,43 @@
-import threading
+
+import concurrent.futures
 from time import perf_counter_ns
-from threading import Thread
+
 
 def sum(ilk,son):
     global toplam
-    
     for i in range(ilk,(son+1)):
-        toplam += i
+        toplam += i;
+    print(f"Ara toplam : {toplam}")
 
-    print(f"aratoplam  : {toplam}")
-    return toplam
-
-threads = []
-lock = threading.Lock()
-while True:
+for i in range(10):
     global toplam
-    toplam =0
+    toplam = 0 
     n = input("Cikis yapmak icin 'x' e basiniz veya \nthread sayisini giriniz:    ")
-    print(n)
     if n =='x':
         break
+
     n=int(n)
     parca = int(10000000 / n)
     kalan = 10000000 % n
-    del threads
-    threads = []
     startTime= perf_counter_ns()
+    pool = concurrent.futures.ThreadPoolExecutor()
     for i in range(n):
         ilk=0
         son=0
-        ilk = ilk + i * parca    
-        son = ilk + parca - 1   
+        ilk = ilk + i * parca;
+        son = ilk + parca - 1
         if (i == n - 1):
             son = son + kalan+1
+        print(i)
         print(f"ilk : {ilk} --- son : {son}")
-        a = Thread(target=sum, args=(ilk,son,))
-        threads.append(a)
+        pool.submit(sum,ilk,son)
 
-    for a in threads:
-        a.start()
-        #lock.acquire()
-        a.join()
-        endTime = perf_counter_ns()
-     
-        #lock.release()
-        
-    print("*******************************************")
-    print(f"genel toplam: {toplam}")
+    pool.shutdown(wait=True)
+    
+    endTime = perf_counter_ns()
+    print("********************************************")
+    print(f"toplam : {toplam}")
     print("---------")
     print(f"With {n} thread, it took {endTime-startTime} ns to complete")
     print("********************************************")
-
-   
-
-    
     
