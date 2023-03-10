@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>641f4645-163a-448b-ad49-795fff665945</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Thread1.py</StartupFile>
+    <StartupFile>module3.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,6 +22,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="module1.py" />
+    <Compile Include="module2.py" />
+    <Compile Include="module3.py" />
     <Compile Include="Thread1.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
