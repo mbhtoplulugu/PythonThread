@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>641f4645-163a-448b-ad49-795fff665945</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Thread1.py</StartupFile>
+    <StartupFile>Thread2.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>

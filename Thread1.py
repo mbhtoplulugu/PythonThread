@@ -1,21 +1,21 @@
-import threading
 from time import perf_counter_ns
 from threading import Thread
 
 def sum(ilk,son):
     global toplam
-    
     for i in range(ilk,(son+1)):
         toplam += i
+ 
 
-    print(f"aratoplam  : {toplam}")
-    return toplam
-
+global toplam
+toplam = 0 
+ilk=0
+son=0
 threads = []
-lock = threading.Lock()
+
 while True:
-    global toplam
-    toplam =0
+    
+    toplam = 0 
     n = input("Cikis yapmak icin 'x' e basiniz veya \nthread sayisini giriniz:    ")
     print(n)
     if n =='x':
@@ -29,10 +29,11 @@ while True:
     for i in range(n):
         ilk=0
         son=0
-        ilk = ilk + i * parca    
-        son = ilk + parca - 1   
-        if (i == n - 1):
+        ilk = ilk + i * parca;
+        son = ilk + parca - 1
+        if i == (n - 1):
             son = son + kalan+1
+        
         print(f"ilk : {ilk} --- son : {son}")
         a = Thread(target=sum, args=(ilk,son,))
         threads.append(a)
@@ -45,8 +46,8 @@ while True:
      
         #lock.release()
         
-    print("*******************************************")
-    print(f"genel toplam: {toplam}")
+    print("********************************************")
+    print(f"toplam : {toplam}")
     print("---------")
     print(f"With {n} thread, it took {endTime-startTime} ns to complete")
     print("********************************************")

@@ -5,7 +5,7 @@ def sum(ilk,son):
     global toplam
     for i in range(ilk,son+1):
         toplam += i;
-    print(f"Ara toplam : {toplam}")
+    
 
 threads = []
 
